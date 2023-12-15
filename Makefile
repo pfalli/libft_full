@@ -1,1 +1,2 @@
-dcsdjcnjssjdn
+NAME: libftprint.a
+
