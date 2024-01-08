@@ -23,7 +23,7 @@ float average (int n, ...)
 	va_start(ap, n);
 	total = 0;
 	i = 0;
-	while(i > n)
+	while(i < n)
 	{
 		total += va_arg(ap, int);
 		++i;
@@ -38,4 +38,6 @@ int main ()
 
 	average_age = average(4,	6, 15, 34, 78);
 	printf("The average age of those 4 people is %.2f\n", average_age);
+	return(0);
 }
+

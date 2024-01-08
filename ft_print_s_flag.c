@@ -10,4 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_print_s()
+#include "printf.h"
+
+int ft_print_string(char *string)
+{
+	int count;
+    count = 0;
+
+    if (!string)
+        return(NULL);
+    while (string[count])
+    {
+        write(1, &string[count], 1);
+        count++;
+    }
+    return(count);
+
+}

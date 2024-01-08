@@ -12,15 +12,14 @@
 
 #include "printf.h"
 
-int print_element(char element)
+int print_element(char element, va_list ap)
 {
 	int count;
 
 	if (element == 'c')
-		count += print_char(va_arg(ap, int));
-	else if (element == 's')
-		count += print_string(va_arg(ap, char));
-	else if
+		count += ft_print_char(va_arg(ap, int));
+	if (element == 's')
+		return(ft_print_string(ap)); // there are 2 ways to do it //
 }
 
 
@@ -28,17 +27,26 @@ int print_element(char element)
 int ft_printf(const char *format, ...)
 {
 	va_list ap;
-	int count;
+	int count = 0;
+	va_start(ap, format);
 
-	va_start(ap, format) ;
-	count = 0;
-	while (*format )
+	while(*format)
 	{
-		if (*format == '%')
-			count += print_element(*(++format), ap);
-		else	
-			write
-		
+		if (*format == '%' && (*format +1) == 0)
+			break;
+		else if (*format == '%')
+			count += print_element(ap, *(format++));
+		else
+			count += write(1, format, 1);
+		format++;
 	}
-	
+	va_end(ap);
+	return(count);
+}
+
+
+int main()
+{
+	ft_printf("Sono di Roma");
+	return 0;
 }
