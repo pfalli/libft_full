@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf_char.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 10:30:15 by pfalli            #+#    #+#             */
-/*   Updated: 2023/12/14 11:13:17 by pfalli           ###   ########.fr       */
+/*   Created: 2023/12/14 11:11:07 by pfalli            #+#    #+#             */
+/*   Updated: 2023/12/15 11:22:03 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-# include <stdarg.h>
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-
-int			ft_printf(const char *, ...);
-int 		ft_print_char();
-int         ft_printf_string;
-
-#endif
+int ft_print_char(char c)
+{
+	write(1, &c, 1);
+	return(1);
+}
