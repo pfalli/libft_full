@@ -21,13 +21,34 @@ INC_DIR =	.
 
 CPPFLAGS =-I$(INC_DIR)
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME):	$(OBJS)
+		cp $(LIBFT_PATH) ./$(NAME) 
 
-$(NAME):	$(OBJ) $(LIBFT)
+ar rc $(NAME) $(OBJS)
 
-ar rcs $(NAME) $(OBJS)
+$(OBJS):
+		$(CC) $(CPPFLAGS) $(CCFLAGS) $(SRC)
 
-%.o: %.c
-	$(CC) $(CPPFLAGS) $(CCFLAGS) -c $< -o $@
+$(LIBFT):
+		cd $(LIBFT_PATH) && $(MAKE)
+
+test:	
+	make 
+	$(CC) $(NAME) main_ft_printf.c
+	./a.out
+
+
+clean:
+	rm -f $(OBJS)
+	cd ${LIBFT} && ${MAKE} clean
+
+fclean:	clean
+	rm -f ${NAME}
+	cd ${LIBFT} && ${MAKE} fclean
+
+
+re: fclean all
+
+.PHONY:	all clean fclean re ${LIBFT} test
