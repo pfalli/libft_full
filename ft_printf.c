@@ -20,6 +20,18 @@ int print_element(char element, va_list ap)
 		count += ft_print_char(va_arg(ap, int));
 	if (element == 's')
 		return(ft_print_string(ap)); // there are 2 ways to do it //
+	if (element == 'd')
+		return(ft_print_nbr(ap));
+	if (element == 'i')
+		return(ft_print_nbr(ap))
+	if (element == 'u')
+		return
+	if (element == 'x')
+		return
+	if (element == 'X')
+		return
+	if (element == '%')
+		return
 }
 
 

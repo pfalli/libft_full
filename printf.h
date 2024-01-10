@@ -17,9 +17,11 @@
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "libft.a/libft.h"
 
 int			ft_printf(const char *, ...);
 int 		ft_print_char();
 int         ft_printf_string;
+int         ft_print_nbr(int nbr);
 
 #endif

@@ -18,7 +18,7 @@ int ft_print_string(char *string)
     count = 0;
 
     if (!string)
-        return(NULL);
+        return(-1);
     while (string[count])
     {
         write(1, &string[count], 1);
@@ -26,4 +26,16 @@ int ft_print_string(char *string)
     }
     return(count);
 
+}
+
+int main()
+{
+    char *string = "ciao";
+    int result = ft_print_string(string);
+
+    if(result == -1)
+        printf("Error\n");
+    else
+        printf("\nNumber of char printed %d\n", result);
+    return(0);
 }
