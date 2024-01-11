@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_print_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 10:30:15 by pfalli            #+#    #+#             */
-/*   Updated: 2023/12/14 11:13:17 by pfalli           ###   ########.fr       */
+/*   Created: 2024/01/11 15:17:21 by pfalli            #+#    #+#             */
+/*   Updated: 2024/01/11 15:17:21 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-#include <unistd.h>
-# include <stdarg.h>
-# include <stddef.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include "libft.a/libft.h"
+int ft_print_u (unsigned int nbr)
+{
+    int count = 0;
 
-int			ft_printf(const char *, ...);
-int 		ft_print_char();
-int         ft_printf_string;
-int         ft_print_nbr(int nbr);
-int ft_print_u (unsigned int nbr);
-int ft_print_percentage (void);
-
-#endif
+    if (nbr < 10)
+        count += ft_print_char(nbr + '0');
+    else
+        ft_print_u(nbr / 10);
+        ft_print_u(nbr % 10);
+    return(count);
+}

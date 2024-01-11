@@ -23,15 +23,17 @@ int print_element(char element, va_list ap)
 	if (element == 'd')
 		return(ft_print_nbr(ap));
 	if (element == 'i')
-		return(ft_print_nbr(ap))
-	if (element == 'u')
+		return(ft_print_nbr(ap));
+	if (element == 'p')
 		return
+	if (element == 'u')
+		return(ft_print_u(ap));
 	if (element == 'x')
 		return
 	if (element == 'X')
 		return
 	if (element == '%')
-		return
+		return(ft_print_percentage(ap));
 }
 
 
