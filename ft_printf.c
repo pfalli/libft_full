@@ -29,7 +29,7 @@ int print_element(char element, va_list ap)
 	if (element == 'u')
 		return(ft_print_u(ap));
 	if (element == 'x')
-		return
+		return(ft_print_hexa(ap));
 	if (element == 'X')
 		return
 	if (element == '%')

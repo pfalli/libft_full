@@ -30,7 +30,7 @@ int ft_print_string(char *string)
 
 int main()
 {
-    char *string = "ciao";
+    char *string = "io sono Jack piacere!";
     int result = ft_print_string(string);
 
     if(result == -1)
