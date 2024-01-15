@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_int.c                                     :+:      :+:    :+:   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:06:05 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/08 20:06:05 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/15 17:12:00 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -40,36 +40,36 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 }
 
-
-int len_nbr(int nbr)
+int	len_nbr(int nbr)
 {
-    int length = 0;
+	int	length;
 
-    if(nbr <= 0)
-        length++;
-    while (nbr != 0)
-    {
-        nbr = nbr / 10;
-        length++;
-    }
-    return(length);
-
+	length = 0;
+	if (nbr <= 0)
+		length++;
+	while (nbr != 0)
+	{
+		nbr = nbr / 10;
+		length++;
+	}
+	return (length);
 }
 
-
-int ft_print_nbr(int nbr)
+int	ft_print_nbr(int nbr)
 {
-    int count = 0;
+	int	count;
 
-    count = len_nbr(nbr);
-    ft_putnbr_fd(nbr, 1);
-    return(count);
+	count = 0;
+	count = len_nbr(nbr);
+	ft_putnbr_fd(nbr, 1);
+	return (count);
 }
 
-int main()
+int	main(void)
 {
-    int number = 37468;
-    int result = ft_print_nbr(number);
+	int	number;
+	int	result;
 
-
+	number = 37468;
+	result = ft_print_nbr(number);
 }

@@ -1,54 +1,36 @@
-NAME = libftprint.a
 
-LIBFT = libft.a
+NAME = libftprintf.a
+LIBFTNAME = libft.a
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+LIBFTDIR = ./libft
 
-LIBFT_PATH = ./libft
+SRCS = 	ft_print_char.c \
+		ft_print_string.c \
+		ft_print_nbr.c \
+		ft_print_u.c \
+		ft_print_hexa.c \
+		ft_print_uphexa.c \
+		ft_print_percentage.c \
 
-SRC =	$( \
-				ft_printf_char.c \
-				ft_print_string.c \
-				ft_print_int.c \
+OBJS = $(SRCS:.c=.o)
 
-	)
+all: $(NAME)
 
-OBJS = $(SRC:.c=.o)
+makelibft:
+	make -C $(LIBFTDIR)
+	cp $(LIBFTDIR)/$(LIBFTNAME) .
+	mv $(LIBFTNAME) $(NAME)
 
-CC = gcc
-
-CCFLAGS = -Wall -Wextra -Werror
-
-INC_DIR =	.
-
-CPPFLAGS =-I$(INC_DIR)
-
-all: $(LIBFT) $(NAME)
-
-$(NAME):	$(OBJS)
-		cp $(LIBFT_PATH) ./$(NAME) 
-
-ar rc $(NAME) $(OBJS)
-
-$(OBJS):
-		$(CC) $(CPPFLAGS) $(CCFLAGS) $(SRC)
-
-$(LIBFT):
-		cd $(LIBFT_PATH) && $(MAKE)
-
-test:	
-	make 
-	$(CC) $(NAME) main_ft_printf.c
-	./a.out
-
+$(NAME): makelibft $(OBJS)
+	ar -r $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	cd ${LIBFT} && ${MAKE} clean
-
-fclean:	clean
-	rm -f ${NAME}
-	cd ${LIBFT} && ${MAKE} fclean
-
-
+	cd $(LIBFTDIR) && make clean
+	
+fclean: clean
+	rm -f $(NAME)
+	cd $(LIBFTDIR) && make fclean
+	
 re: fclean all
-
-.PHONY:	all clean fclean re ${LIBFT} test
