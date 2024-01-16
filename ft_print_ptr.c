@@ -6,41 +6,43 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:02:12 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/16 15:11:52 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/16 17:15:38 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-int	ft_print_string(char *string)
-{
-	int	count;
-
-	count = 0;
-	if (!string)
-		return (-1);
-	while (string[count])
-	{
-		write(1, &string[count], 1);
-		count++;
-	}
-	return (count);
-}
+//	void	ft_putchar_fd(char c, int fd)
+//	{
+//		write(fd, &c, 1);
+//	}
+//	
+//	int	ft_print_string(char *string)
+//	{
+//		int	count;
+//	
+//		count = 0;
+//		if (!string)
+//			return (-1);
+//		while (string[count])
+//		{
+//			write(1, &string[count], 1);
+//			count++;
+//		}
+//		return (count);
+//	}
 
 int	get_len(unsigned long long num)
 {
 	int	count;
 
 	count = 0;
+	if(num == 0)
+		return(1);
 	while (num != 0)
 	{
 		count++;
-		num = num / 16;
+		num = num / 16; /// here was the mistake
 	}
 	return (count);
 }
@@ -77,13 +79,13 @@ int	ft_print_ptr(unsigned long long num)
 	}
 }
 
-int	main(void)
-{
-	int x = 666;
-	int *ptr = &x;
-
-    printf("%p\n", (void *)ptr);
-	
-    ft_print_ptr((unsigned long long)ptr);
-	return (0);
-}
+//	int	main(void)
+//	{
+//		int x = 666;
+//		int *ptr = &x;
+//	
+//	    printf("%p\n", (void *)ptr);
+//		
+//	    ft_print_ptr((unsigned long long)ptr);
+//		return (0);
+//	}

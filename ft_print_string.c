@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 11:21:32 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/16 12:48:34 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/16 17:01:20 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	ft_print_string(char *string)
 	int	count;
 
 	count = 0;
-	if (!string)
-		return (-1);
+	if (string == NULL)
+		return (write(1, "(null)", 6));
 	while (string[count])
 	{
 		write(1, &string[count], 1);
@@ -27,14 +27,15 @@ int	ft_print_string(char *string)
 	return (count);
 }
 
-//  int	main(void)
-//  {
-//  	char *string = "io sono Jack piacere!";
-//  	int result = ft_print_string(string);
-//  
-//  	if (result == -1)
-//  		printf("Error\n");
-//  	else
-//  		printf("\nNumber of char printed %d\n", result);
-//  	return (0);
-//  }
+//	int	main(void)
+//	{
+//		char *string = "hello";
+//		int result = ft_print_string(string);
+//	
+//		if (result == -1)
+//			printf("Error\n");
+//		else
+//			printf("\nNumber of char printed %d\n", result);
+//		return (0);
+//	}
+
