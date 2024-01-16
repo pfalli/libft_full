@@ -6,24 +6,11 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:21:30 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/15 17:11:55 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/16 13:12:02 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	get_len(unsigned long num)
-{
-	int	count;
-
-	count = 0;
-	while (num != 0)
-	{
-		count++;
-		count = count / 16;
-	}
-	return (count);
-}
 
 int	ft_print_hexa(unsigned long num)
 {

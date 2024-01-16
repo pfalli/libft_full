@@ -12,6 +12,8 @@ SRCS = 	ft_print_char.c \
 		ft_print_hexa.c \
 		ft_print_uphexa.c \
 		ft_print_percentage.c \
+		ft_print_ptr.c \
+		ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -23,7 +25,7 @@ makelibft:
 	mv $(LIBFTNAME) $(NAME)
 
 $(NAME): makelibft $(OBJS)
-	ar -r $(NAME) $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS)

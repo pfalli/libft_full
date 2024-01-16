@@ -6,59 +6,75 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:29:40 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/15 17:12:26 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/16 15:00:22 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	ft_print_char(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
 int	print_element(char element, va_list ap)
 {
 	int	count;
 
+	count = 0;
 	if (element == 'c')
 		count += ft_print_char(va_arg(ap, int));
 	if (element == 's')
-		return (ft_print_string(ap));
+		count += ft_print_string(va_arg(ap, char*));
 	if (element == 'd')
-		return (ft_print_nbr(ap));
+		count += ft_print_nbr(va_arg(ap, int));
 	if (element == 'i')
-		return (ft_print_nbr(ap));
+		count += ft_print_nbr(va_arg(ap, int));
 	if (element == 'p')
-		return (ft_print_ptr(ap));
+		count += ft_print_ptr(va_arg(ap, unsigned long long));
 	if (element == 'u') 
-		return (ft_print_u(ap));
+		count += ft_print_u(va_arg(ap, unsigned int));
 	if (element == 'x')
-		return (ft_print_hexa(ap));
+		count += ft_print_hexa(va_arg(ap, unsigned long));
 	if (element == 'X')
-		return (ft_print_H(ap));
+		count += ft_print_up_hexa(va_arg(ap, unsigned long));
 	if (element == '%')
-		return (ft_print_percentage(ap));
+		count += ft_print_percentage();
+	return(count);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int		count;
+	int		i;
+	int		len;
 
-	count = 0;
+	i = 0;
+	len = 0;
 	va_start(ap, format);
-	while (*format)
+	while (format[i])
 	{
-		if (*format == '%' && (*format + 1) == 0)
-			break ;
-		else if (*format == '%')
-			count += print_element(ap, *(format++));
+		if (format[i] == '%')
+		{
+			len += print_element(format[i + 1], ap);
+			i++;
+		}
 		else
-			count += write(1, format, 1);
-		format++;
+			len += ft_print_char(format[i]);
+		i++;
 	}
 	va_end(ap);
-	return (count);
+	return (len);
 }
 
-int	main(void)
-{
-	ft_printf("Sono di Roma");
-	return (0);
-}
+//	int main()
+//	{
+//		ft_print_char('0');
+//		ft_print_char('x');
+//		ft_print_char('0');
+//		ft_print_char('0');
+//		ft_print_char('0');
+//		ft_print_char('0');
+//		ft_print_char('0');
+//	}
