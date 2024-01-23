@@ -6,34 +6,31 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:30:15 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/23 15:27:20 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/23 15:52:20 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <unistd.h>
+# include "libft/libft.h"
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include "libft/libft.h"
+# include <unistd.h>
 
-#define HEXABASE = "012345689ABCDEF"
+int		get_len(unsigned long long num);
+int		ft_printf(const char *format, ...);
+int		ft_print_char(char c);
+int		ft_print_string(char *string);
+int		ft_print_nbr(int nbr);
+int		ft_print_u(unsigned int nbr);
+int		ft_print_percentage(void);
+int		ft_print_ptr(unsigned long num);
+int		ft_print_hexa(unsigned long num);
+int		ft_print_up_hexa(unsigned long num);
 
-int			get_len(unsigned long long num);
-int			ft_printf(const char *, ...);
-int			ft_print_char(char c);
-int         ft_print_string(char *string);
-int         ft_print_nbr(int nbr);
-int 		ft_print_u (unsigned int nbr);
-int 		ft_print_percentage (void);
-int			ft_print_ptr(unsigned long num);
-int			ft_print_hexa(unsigned long num);
-int			ft_print_up_hexa(unsigned long num);
-
-
-void		ft_putchar_fd(char c, int fd);
-void		ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr_fd(int n, int fd);
 #endif
