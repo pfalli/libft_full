@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:29:40 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/16 17:10:57 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/23 15:31:26 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@ int	print_element(char element, va_list ap)
 		count += ft_print_char(va_arg(ap, int));
 	if (element == 's')
 		count += ft_print_string(va_arg(ap, char*));
-	if (element == 'd')
-		count += ft_print_nbr(va_arg(ap, int));
-	if (element == 'i')
+	if (element == 'd' || element == 'i')
 		count += ft_print_nbr(va_arg(ap, int));
 	if (element == 'p')
-		count += ft_print_ptr(va_arg(ap, unsigned long long));
+		count += ft_print_ptr(va_arg(ap, unsigned long));
 	if (element == 'u') 
 		count += ft_print_u(va_arg(ap, unsigned int));
 	if (element == 'x')
-		count += ft_print_hexa(va_arg(ap, unsigned long));
+		count += ft_print_hexa(va_arg(ap, unsigned int));
 	if (element == 'X')
-		count += ft_print_up_hexa(va_arg(ap, unsigned long));
+		count += ft_print_up_hexa(va_arg(ap, unsigned int));
 	if (element == '%')
 		count += ft_print_percentage();
 	return(count);

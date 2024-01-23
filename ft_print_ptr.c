@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:02:12 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/16 17:15:38 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/23 15:27:41 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,43 +37,27 @@ int	get_len(unsigned long long num)
 	int	count;
 
 	count = 0;
-	if(num == 0)
-		return(1);
+	if (num == 0)
+		return (1);
 	while (num != 0)
 	{
 		count++;
-		num = num / 16; /// here was the mistake
+		num = num / 16;
 	}
 	return (count);
 }
 
-void	ft_put_ptr(unsigned long long num)
-{
-	if (num >= 16)
-	{
-		ft_put_ptr(num / 16);
-		ft_put_ptr(num % 16);
-	}
-	else
-	{
-		if (num < 9)
-			ft_putchar_fd((num + '0'), 1);
-		else
-			ft_putchar_fd((num - 10 + 'a'), 1);
-	}
-}
-
-int	ft_print_ptr(unsigned long long num)
+int	ft_print_ptr(unsigned long num)
 {
 	int	len;
 
-	if (num != 0)
+	if (num == 0)
 		return (ft_print_string("0x0"));
 	else
 	{
 		len = 0;
 		len += ft_print_string("0x");
-		ft_put_ptr(num);
+		ft_print_hexa(num);
 		len += get_len(num);
 		return (len);
 	}

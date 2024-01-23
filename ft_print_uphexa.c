@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:21:30 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/16 13:07:39 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/22 15:27:33 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	ft_print_up_hexa(unsigned long num)
 		ft_print_up_hexa(num % 16);
 	}
 	else if (num < 10)
-		ft_putchar_fd((num + 48), 1);
+		ft_print_char(num + 48);
 	else
-		ft_putchar_fd((num + 55), 1);
+		ft_print_char(num + 55);
 	return (get_len(num));
 }
 

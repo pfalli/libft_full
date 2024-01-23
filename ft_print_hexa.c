@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:21:30 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/16 17:23:34 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/01/23 15:26:50 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,43 @@
 
 int	ft_print_hexa(unsigned long num)
 {
+	int len;
+	len = 0;
 	if (num >= 16)
 	{
 		ft_print_hexa(num / 16);
 		ft_print_hexa(num % 16);
 	}
 	else if (num < 10)
-		ft_putchar_fd((num + 48), 1);
+		ft_print_char(num + 48);
 	else
-		ft_putchar_fd((num + 87), 1);
-	return (get_len(num));
+		ft_print_char(num + 87);
+	len = get_len(num);
+	return (len);
 }
 
-//  int main()
-//  {
-//      unsigned long long number = 0xABCD12345678;
-//
-//      ft_print_hexa(number);
-//
-//      return (0);
-//  }
+
+
+
+//	int	ft_print_hexa(unsigned long long num, const char format)
+//	{
+//		if (num >= 16)
+//		{
+//			ft_print_hexa(num / 16, format);
+//			ft_print_hexa(num % 16,format);
+//		}
+//		else 
+//		{
+//			if (num < 10)
+//				ft_print_char(num + 48);
+//			else
+//			{
+//				if (num == 'x')
+//					ft_print_char(num + 55);
+//				else if (num == 'X')
+//					ft_print_char(num + 87);
+//			}
+//		}
+//		return (get_len(num));
+//	}
+
