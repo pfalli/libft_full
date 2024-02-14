@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 18:02:12 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/23 15:27:41 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/14 11:25:33 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 //		int	count;
 //	
 //		count = 0;
-//		if (!string)
+//		if (!string)git clone 
 //			return (-1);
 //		while (string[count])
 //		{
