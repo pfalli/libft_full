@@ -6,7 +6,7 @@
 /*   By: pfalli <pfalli@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 10:30:15 by pfalli            #+#    #+#             */
-/*   Updated: 2024/01/23 15:52:20 by pfalli           ###   ########.fr       */
+/*   Updated: 2024/02/14 13:49:17 by pfalli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-int		get_len(unsigned long long num);
+int		get_len(unsigned long num);
 int		ft_printf(const char *format, ...);
 int		ft_print_char(char c);
 int		ft_print_string(char *string);
