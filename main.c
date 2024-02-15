@@ -9,12 +9,14 @@ int	main(void)
 	int n;
 
 	n = 0;
-	n = ft_printf("%p", (void *)0);
+	n = ft_printf("%p %% %c %s %x %d %u %X %i", (void *)0, 'c', "hello", 42, 42, 42, 42, 42);
 	ft_printf("--->return value length ft_printf: %d\n", n);
-	n = printf("%p", (void *)0);
+	n = printf("%p %% %c %s %x %d %u %X %i", (void *)0, 'c', "hello", 42, 42, 42, 42, 42);
 	printf("---> return value length printf: %d\n", n);
 	return (0);
 }
+
+
 
 //	int main(void) 
 //	{

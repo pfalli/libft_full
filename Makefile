@@ -19,17 +19,31 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-makelibft:
+$(LIBFTNAME):
 	make -C $(LIBFTDIR)
 	cp $(LIBFTDIR)/$(LIBFTNAME) .
-	mv $(LIBFTNAME) $(NAME)
+#	mv $(LIBFTNAME) $(NAME)
 
-$(NAME): makelibft $(OBJS)
+$(NAME): $(LIBFTNAME) $(OBJS)
+	cp $(LIBFTNAME) $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-	cd $(LIBFTDIR) && make clean
+	rm -f $(LIBFTNAME)
+	make -C $(LIBFTDIR) clean
+
+#	makelibft:
+#		make -C $(LIBFTDIR)
+#		cp $(LIBFTDIR)/$(LIBFTNAME) .
+#		mv $(LIBFTNAME) $(NAME)
+#	
+#	$(NAME): makelibft $(OBJS)
+#		ar -rcs $(NAME) $(OBJS)
+#	
+#	clean:
+#		rm -f $(OBJS)
+#		cd $(LIBFTDIR) && make clean
 	
 fclean: clean
 	rm -f $(NAME)
