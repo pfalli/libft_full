@@ -1,52 +1,63 @@
+NAME = libtfull.a
 
-NAME = libftprintf.a
-LIBFTNAME = libft.a
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
-LIBFTDIR = ./libft
+# Directories
+INC = inc/
+SRC_DIR = src/
+OBJ_DIR = obj/
 
-SRCS = 	ft_print_char.c \
-		ft_print_string.c \
-		ft_print_nbr.c \
-		ft_print_u.c \
-		ft_print_hexa.c \
-		ft_print_uphexa.c \
-		ft_print_percentage.c \
-		ft_print_ptr.c \
-		ft_printf.c
+# compilers and flags
+CC = gcc
+FLAGS = -Wall -Werror -Wextra -I
 
-OBJS = $(SRCS:.c=.o)
+# src directories
+LIBFT_DIR	=	$(SRC_DIR)ft_isalpha \		ft_memmove \		ft_strjoin \				
+				 ft_isdigit \				ft_memchr \			ft_strtrim \	
+				 ft_isalnum \				ft_strnstr \		ft_itoa \		
+				 ft_isascii \				ft_strrchr \		ft_strmapi \		
+				 ft_isprint \				ft_strchr \			ft_striteri \	
+				 ft_strlen \				ft_strncmp \		ft_striteri \		
+				 ft_memset \				ft_memcmp \			ft_putchar_fd \	
+				 ft_bzero \					ft_tolower \		ft_putstr_fd \	
+				 ft_memcpy \				ft_toupper \		ft_putendl_fd \		
+				 ft_strlen \				ft_atoi \			ft_split \	
+				 ft_strlcpy \				ft_calloc \			ft_substr \	
+				 ft_strlcat \				ft_strdup \				
 
-all: $(NAME)
+PRINTF_DIR =$(SRC_DIR) ft_printf.c\
+						ft_print_char.c\
+						ft_print_hexa.c\
+						ft_print_nbr.c\
+						ft_print_percentage.c\
+						ft_print_ptr.c\
+						ft_print_string.c\
+						ft_print_u.c\
+						ft_print_uphexa.c\
 
-$(LIBFTNAME):
-	make -C $(LIBFTDIR)
-	cp $(LIBFTDIR)/$(LIBFTNAME) .
-#	mv $(LIBFTNAME) $(NAME)
+GNL_DIR = $(SRC_DIR) get_next_line.c\
+						get_next_line_utils.c
 
-$(NAME): $(LIBFTNAME) $(OBJS)
-	cp $(LIBFTNAME) $(NAME)
-	ar -rcs $(NAME) $(OBJS)
+
+#-----------------------------------------------------------------
+SRC = $(LIBFT_DIR)$(PRINTF_DIR)$(GNL_DIR)
+
+OBJ = $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
+
+# build rules make
+all:	$(NAME)
+
+$(NAME):	$(OBJ)
+				ar rcs $(NAME) $(OBJ)
+
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+				mkdir -p $(@D)
+				$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(LIBFTNAME)
-	make -C $(LIBFTDIR) clean
+				rm -f $(OBJ_DIR)
 
-#	makelibft:
-#		make -C $(LIBFTDIR)
-#		cp $(LIBFTDIR)/$(LIBFTNAME) .
-#		mv $(LIBFTNAME) $(NAME)
-#	
-#	$(NAME): makelibft $(OBJS)
-#		ar -rcs $(NAME) $(OBJS)
-#	
-#	clean:
-#		rm -f $(OBJS)
-#		cd $(LIBFTDIR) && make clean
-	
-fclean: clean
-	rm -f $(NAME)
-	cd $(LIBFTDIR) && make fclean
-	
-re: fclean all
+fclean: 		clean
+				rm -f $(NAME)
+
+re: 			fclean all
+
+.PHONY: 		all clean fclean re
